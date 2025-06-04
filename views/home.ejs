@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <% if (typeof vinyls !== 'undefined' && vinyls.length > 0) { %>
+        <ul>
+            <% vinyls.forEach(vinyl => { %>
+            <li>
+                <a href="/vinyls/<%= vinyl._id %>"><%= vinyl.title %> - <%= vinyl.artist %></a>
+            </li>
+            <% }); %>
+        </ul>
+        <% } else { %>
+        <p>No vinyls found.</p>
+        <% } %>
+        <p><a href="/vinyls/new">Add New Vinyl</a></p>
+    </body>
+</html>
