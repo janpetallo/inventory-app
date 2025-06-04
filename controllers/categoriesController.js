@@ -5,7 +5,7 @@ async function getCategoriesList(req, res) {
     const categories = await db.getAllCategories();
     res.render('categories', {
         title: 'Categories',
-        categories: categories // This should be replaced with actual categories data from the database
+        categories: categories
     });
 }
 
