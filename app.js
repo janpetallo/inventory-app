@@ -11,5 +11,9 @@ app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-enco
 const assetsPath = path.join(__dirname, 'assets'); 
 app.use('/assets', express.static(assetsPath)); // Serve static files from the 'assets' directory
 
+const homeRouter = require('./routes/homeRouter'); 
+app.use('/', homeRouter); 
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Express app listening on port ${PORT}!`));
