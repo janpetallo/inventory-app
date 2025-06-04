@@ -17,6 +17,8 @@ app.use('/', homeRouter); // Use the home router for routes starting with '/'
 const categoriesRouter = require('./routes/categoriesRouter');
 app.use('/categories', categoriesRouter); // Use the categories router for routes starting with '/categories'
 
+const artistsRouter = require('./routes/artistsRouter');
+app.use('/artists', artistsRouter); // Use the artists router for routes starting with '/artists'
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Express app listening on port ${PORT}!`));
