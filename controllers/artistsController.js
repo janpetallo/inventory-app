@@ -9,7 +9,19 @@ async function getArtistsList(req, res) {
     });
 }
 
+async function getVinylsByArtist(req, res) {
+    const artistId = req.params.id;
+    const artistName = req.params.name;
+    console.log(`Fetching vinyls for artist: ${artistName} (ID: ${artistId})...`);
+    const vinyls = await db.getVinylByArtist(artistId);
+    res.render('byArtist', {
+        title: 'Vinyls by Artist',
+        vinyls: vinyls,
+        artistName: artistName
+    });
+}
 
 module.exports = {
-    getArtistsList
+    getArtistsList,
+    getVinylsByArtist
 };
