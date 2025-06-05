@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node app.js",
+    "dev": "node app.js --watch",
     "db": "node db/populatedb.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
