@@ -10,9 +10,12 @@ async function getVinylsList(req, res) {
 }
 
 async function addNewVinylForm(req, res) {
-    console.log("Rendering new vinyl form...");
+    const artists = await db.getAllArtists();
+    const genres = await db.getAllCategories();
     res.render('newVinyl', {
-        title: 'Add New Vinyl'
+        title: 'Add New Vinyl',
+        artists: artists,
+        genres: genres
     });
 }
 

@@ -14,11 +14,19 @@
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required>
 
-            <label for="artist_id">Artist ID:</label>
-            <input type="number" id="artist_id" name="artist_id" required>
+            <label for="artist_id">Artist:</label>
+            <select id="artist_id" name="artist_id" required>
+                <% artists.forEach(artist => { %>
+                    <option value="<%= artist.id %>"><%= artist.name %></option>
+                <% }); %>
+            </select>
 
-            <label for="genre_id">Genre ID:</label>
-            <input type="number" id="genre_id" name="genre_id" required>
+            <label for="genre_id">Genre:</label>
+            <select id="genre_id" name="genre_id" required>
+                <% genres.forEach(genre => { %>
+                    <option value="<%= genre.id %>"><%= genre.name %></option>
+                <% }); %>
+            </select>
 
             <label for="release_year">Release Year:</label>
             <input type="number" id="release_year" name="release_year">
