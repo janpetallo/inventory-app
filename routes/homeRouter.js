@@ -9,4 +9,8 @@ homeRouter.get('/', homeController.getVinylsList); // Route to get the list of v
 homeRouter.get('/vinyls/new', homeController.addNewVinylForm); // Route to render the new vinyl form
 homeRouter.post('/vinyls/new', homeController.addNewVinyl); // Route to handle new vinyl submission
 
+// edit vinyl form
+homeRouter.get('/vinyls/:title/:id/edit', homeController.editVinylForm); // Route to render the edit vinyl form
+homeRouter.post('/vinyls/:title/:id/edit', homeController.editVinyl); // Route to handle vinyl edit submission
+
 module.exports = homeRouter;

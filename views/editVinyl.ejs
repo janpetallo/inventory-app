@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <form action="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/edit" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= vinyl.title %>" required>
+
+        <label for="artist_id">Artist:</label>
+        <select id="artist_id" name="artist_id" required>
+            <% artists.forEach(artist => { %>
+                <option value="<%= artist.id %>" <%= vinyl.artist_id == artist.id ? 'selected' : '' %>><%= artist.name %></option>
+            <% }); %>
+        </select>
+
+        <label for="genre_id">Genre:</label>
+        <select id="genre_id" name="genre_id" required>
+            <% genres.forEach(genre => { %>
+                <option value="<%= genre.id %>" <%= vinyl.genre_id == genre.id ? 'selected' : '' %>><%= genre.name %></option>
+            <% }); %>
+        </select>
+
+        <label for="release_year">Release Year:</label>
+        <input type="number" id="release_year" name="release_year" value="<%= vinyl.release_year %>" required>
+
+        <label for="stock_quantity">Stock Quantity:</label>
+        <input type="number" id="stock_quantity" name="stock_quantity" value="<%= vinyl.stock_quantity %>" required>
+
+        <label for="price">Price:</label>
+        <input type="number" step="0.01" id="price" name="price" value="<%= vinyl.price %>" required>
+
+        <label for="cover_image">Cover Image:</label>
+        <input type="text" id="cover_image" name="cover_image" value="<%= vinyl.cover_image %>">
+
+        <button type="submit">Update Vinyl</button>
+    </form>
+    <a href="/">Back to Home</a>
+</body>
+</html>

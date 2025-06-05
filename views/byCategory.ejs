@@ -20,6 +20,13 @@
           <p>Release Year: <%= vinyl.release_year %></p>
           <p>Stock Quantity: <%= vinyl.stock_quantity %></p>
           <p>Price: $<%= vinyl.price %></p>
+          <button>
+            <a href="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/edit">Edit</a>
+          </button>
+          <button>
+            <a href="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/delete">Delete</a>
+          </button>
+          <br />
           <img src="<%= vinyl.cover_image %>" alt="<%= vinyl.title %> cover" />
         </li>
         <% }); %>

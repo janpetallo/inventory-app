@@ -3,6 +3,7 @@ const pool = require('./pool');
 async function getAllVinyls() {
     const query = `
     SELECT 
+        vinyls.id,
         vinyls.title, 
         artists.name AS artist_name, 
         genres.name AS genre_name, 
@@ -17,6 +18,28 @@ async function getAllVinyls() {
     `;
     const { rows } = await pool.query(query);
     return rows;
+}
+
+async function getVinylById(vinylId) {
+    const query = `
+        SELECT 
+            vinyls.id,
+            vinyls.title, 
+            vinyls.artist_id, 
+            vinyls.genre_id, 
+            artists.name AS artist_name, 
+            genres.name AS genre_name, 
+            vinyls.release_year, 
+            vinyls.stock_quantity, 
+            vinyls.price, 
+            vinyls.cover_image
+        FROM vinyls
+        JOIN artists ON vinyls.artist_id = artists.id
+        JOIN genres ON vinyls.genre_id = genres.id
+        WHERE vinyls.id = $1
+    `;
+    const { rows } = await pool.query(query, [vinylId]);
+    return rows[0]; // Return the first row since id is unique
 }
 
 async function getAllArtists() {
@@ -34,6 +57,7 @@ async function getAllCategories() {
 async function getVinylByArtist(artistId) {
     const query = `
         SELECT 
+            vinyls.id,
             vinyls.title, 
             artists.name AS artist_name, 
             genres.name AS genre_name, 
@@ -53,6 +77,7 @@ async function getVinylByArtist(artistId) {
 async function getVinylByCategory(categoryId) {
     const query = `
         SELECT 
+            vinyls.id,
             vinyls.title, 
             artists.name AS artist_name, 
             genres.name AS genre_name, 
@@ -93,13 +118,24 @@ async function addCategory(name) {
     await pool.query(query, [name]);
 }
 
+async function updateVinyl(vinylId, title, artist_id, genre_id, release_year, stock_quantity, price, cover_image) {
+    const query = `
+        UPDATE vinyls
+        SET title = $1, artist_id = $2, genre_id = $3, release_year = $4, stock_quantity = $5, price = $6, cover_image = $7
+        WHERE id = $8
+    `;
+    await pool.query(query, [title, artist_id, genre_id, release_year, stock_quantity, price, cover_image, vinylId]);
+}
+
 module.exports = {
     getAllVinyls,
+    getVinylById,
     getAllArtists,
     getAllCategories,
     getVinylByArtist,
     getVinylByCategory,
     addVinyl,
     addArtist,
-    addCategory
+    addCategory,
+    updateVinyl
 };
