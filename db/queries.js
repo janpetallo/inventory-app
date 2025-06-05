@@ -127,6 +127,14 @@ async function updateVinyl(vinylId, title, artist_id, genre_id, release_year, st
     await pool.query(query, [title, artist_id, genre_id, release_year, stock_quantity, price, cover_image, vinylId]);
 }
 
+async function deleteVinyl(vinylId) {
+    const query = `
+        DELETE FROM vinyls
+        WHERE id = $1
+    `;
+    await pool.query(query, [vinylId]);
+}
+
 module.exports = {
     getAllVinyls,
     getVinylById,
@@ -137,5 +145,6 @@ module.exports = {
     addVinyl,
     addArtist,
     addCategory,
-    updateVinyl
+    updateVinyl,
+    deleteVinyl
 };

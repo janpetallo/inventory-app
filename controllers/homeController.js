@@ -48,10 +48,18 @@ async function editVinyl(req, res) {
     res.redirect('/');
 }
 
+async function deleteVinyl(req, res) {
+    const vinylId = req.params.id;
+    console.log(`Deleting vinyl ID: ${vinylId}`);
+    await db.deleteVinyl(vinylId);
+    res.redirect('/');
+}
+
 module.exports = {
     getVinylsList,
     addNewVinylForm,
     addNewVinyl,
     editVinylForm,
-    editVinyl
+    editVinyl,
+    deleteVinyl
 };
