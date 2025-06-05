@@ -6,14 +6,7 @@ const homeController = require('../controllers/homeController');
 homeRouter.get('/', homeController.getVinylsList); // Route to get the list of vinyls
 
 // new vinyl form
-homeRouter.get('/vinyls/new', (req, res) => {
-    res.send('New Vinyl Form');
-});
-
-homeRouter.post('/vinyls/new', (req, res) => {
-    // Logic to handle new vinyl submission
-    console.log('New vinyl submitted:', req.body);
-    res.redirect('/');
-});
+homeRouter.get('/vinyls/new', homeController.addNewVinylForm); // Route to render the new vinyl form
+homeRouter.post('/vinyls/new', homeController.addNewVinyl); // Route to handle new vinyl submission
 
 module.exports = homeRouter;

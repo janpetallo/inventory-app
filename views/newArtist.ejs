@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Artist</title>
+</head>
+<body>
+    <header>
+        <h1>Add New Artist</h1>
+    </header>
+    <main>
+        <form action="/artists/new" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="formed_year">Formed Year:</label>
+            <input type="number" id="formed_year" name="formed_year">
+
+            <label for="origin">Origin:</label>
+            <input type="text" id="origin" name="origin">
+
+            <button type="submit">Add Artist</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Inventory App</p>
+    </footer>
+</body>
+</html>

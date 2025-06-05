@@ -21,7 +21,23 @@ async function getVinylsByCategory(req, res) {
     });
 }
 
+async function addNewCategoryForm(req, res) {
+    console.log("Rendering new category form...");
+    res.render('newCategory', {
+        title: 'Add New Category'
+    });
+}
+
+async function addNewCategory(req, res) {
+    const { name } = req.body;
+    console.log(`Adding new category: ${name}`);
+    await db.addCategory(name);
+    res.redirect('/categories');
+}
+
 module.exports = {
     getCategoriesList,
-    getVinylsByCategory
+    getVinylsByCategory,
+    addNewCategoryForm,
+    addNewCategory
 };

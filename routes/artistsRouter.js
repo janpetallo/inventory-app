@@ -7,15 +7,8 @@ artistsRouter.get('/', artistsController.getArtistsList); // Route to get the li
 artistsRouter.get('/:name/:id', artistsController.getVinylsByArtist); // Route to get vinyls by artist ID
 
 // new artist form
-artistsRouter.get('/new', (req, res) => {
-    res.send('New artist Form');
-});
-
-artistsRouter.post('/new', (req, res) => {
-    // Logic to handle new artist submission
-    console.log('New artist submitted:', req.body);
-    res.redirect('/');
-});
+artistsRouter.get('/new', artistsController.addNewArtistForm); // Route to render the new artist form
+artistsRouter.post('/new', artistsController.addNewArtist); // Route to handle new artist submission
 
 
 module.exports = artistsRouter;

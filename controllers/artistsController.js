@@ -21,7 +21,23 @@ async function getVinylsByArtist(req, res) {
     });
 }
 
+async function addNewArtistForm(req, res) {
+    console.log("Rendering new artist form...");
+    res.render('newArtist', {
+        title: 'Add New Artist'
+    });
+}
+
+async function addNewArtist(req, res) {
+    const { name, formed_year, origin } = req.body;
+    console.log(`Adding new artist: ${name}, Formed Year: ${formed_year}, Origin: ${origin}`);
+    await db.addArtist(name, formed_year, origin);
+    res.redirect('/artists');
+}
+
 module.exports = {
     getArtistsList,
-    getVinylsByArtist
+    getVinylsByArtist,
+    addNewArtistForm,
+    addNewArtist
 };

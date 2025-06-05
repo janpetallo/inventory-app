@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Vinyl</title>
+</head>
+<body>
+    <header>
+        <h1>Add New Vinyl</h1>
+    </header>
+    <main>
+        <form action="/vinyls/new" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="artist_id">Artist ID:</label>
+            <input type="number" id="artist_id" name="artist_id" required>
+
+            <label for="genre_id">Genre ID:</label>
+            <input type="number" id="genre_id" name="genre_id" required>
+
+            <label for="release_year">Release Year:</label>
+            <input type="number" id="release_year" name="release_year">
+
+            <label for="stock_quantity">Stock Quantity:</label>
+            <input type="number" id="stock_quantity" name="stock_quantity">
+
+            <label for="price">Price:</label>
+            <input type="number" step="0.01" id="price" name="price" required>
+
+            <label for="cover_image">Cover Image:</label>
+            <input type="text" id="cover_image" name="cover_image">
+
+            <button type="submit">Add Vinyl</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Inventory App</p>
+    </footer>
+</body>
+</html>
