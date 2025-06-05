@@ -20,6 +20,7 @@
                     <option value="<%= artist.id %>"><%= artist.name %></option>
                 <% }); %>
             </select>
+            <p><a href="/artists/new">Add New Artist</a></p>
 
             <label for="genre_id">Genre:</label>
             <select id="genre_id" name="genre_id" required>
@@ -27,6 +28,7 @@
                     <option value="<%= genre.id %>"><%= genre.name %></option>
                 <% }); %>
             </select>
+            <p><a href="/categories/new">Add New Genre</a></p>
 
             <label for="release_year">Release Year:</label>
             <input type="number" id="release_year" name="release_year">
