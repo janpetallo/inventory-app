@@ -9,6 +9,19 @@ async function getCategoriesList(req, res) {
     });
 }
 
+async function getVinylsByCategory(req, res) {
+    const categoryId = req.params.id;
+    const categoryName = req.params.name;
+    console.log(`Fetching vinyls for category: ${categoryName} (ID: ${categoryId})...`);
+    const vinyls = await db.getVinylByCategory(categoryId);
+    res.render('byCategory', {
+        title: 'Vinyls by Category',
+        vinyls: vinyls,
+        categoryName: categoryName
+    });
+}
+
 module.exports = {
-    getCategoriesList
+    getCategoriesList,
+    getVinylsByCategory
 };

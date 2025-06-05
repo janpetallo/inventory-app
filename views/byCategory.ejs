@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <header>
+        <h1>Vinyls by Category: <%= categoryName %></h1>
+    </header>
+    <main>
+        <% if (vinyls.length > 0) { %>
+            <ul>
+                <% vinyls.forEach(vinyl => { %>
+                    <li>
+                        <h2><%= vinyl.title %></h2>
+                        <p>Artist: <%= vinyl.artist_name %></p>
+                        <p>Genre: <%= vinyl.genre_name %></p>
+                        <p>Release Year: <%= vinyl.release_year %></p>
+                        <p>Stock Quantity: <%= vinyl.stock_quantity %></p>
+                        <p>Price: $<%= vinyl.price %></p>
+                        <img src="/images/<%= vinyl.cover_image %>" alt="<%= vinyl.title %> cover">
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No vinyls found for this category.</p>
+        <% } %>
+    </main>
+    <footer>
+        <p>&copy; 2025 Inventory App</p>
+    </footer>
+</body>
+</html>
