@@ -7,11 +7,11 @@ categoriesRouter.get('/', categoriesController.getCategoriesList); // Route to g
 categoriesRouter.get('/:name/:id', categoriesController.getVinylsByCategory); // Route to get vinyls by category ID
 
 // new category form
-categoriesRouter.get('/categories//new', (req, res) => {
+categoriesRouter.get('/new', (req, res) => {
     res.send('New Category Form');
 });
 
-categoriesRouter.post('/categories/new', (req, res) => {
+categoriesRouter.post('/new', (req, res) => {
     // Logic to handle new category submission
     console.log('New category submitted:', req.body);
     res.redirect('/');

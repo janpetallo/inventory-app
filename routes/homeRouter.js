@@ -6,7 +6,7 @@ const homeController = require('../controllers/homeController');
 homeRouter.get('/', homeController.getVinylsList); // Route to get the list of vinyls
 
 // new vinyl form
-homeRouter.get('/vinyls//new', (req, res) => {
+homeRouter.get('/vinyls/new', (req, res) => {
     res.send('New Vinyl Form');
 });
 
