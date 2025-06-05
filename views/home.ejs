@@ -11,7 +11,7 @@
         <ul>
             <% vinyls.forEach(vinyl => { %>
             <li>
-                <a href="/vinyls/<%= vinyl.id %>"><%= vinyl.title %> - <%= vinyl.artist %></a>
+                <a href="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>"><%= vinyl.title %> - <%= vinyl.artist %></a>
             </li>
             <% }); %>
         </ul>
