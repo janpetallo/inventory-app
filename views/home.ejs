@@ -17,7 +17,7 @@
                 <p>Release Year: <%= vinyl.release_year %></p>
                 <p>Stock Quantity: <%= vinyl.stock_quantity %></p>
                 <p>Price: $<%= vinyl.price %></p>
-                <img src="/images/<%= vinyl.cover_image %>" alt="<%= vinyl.title %> cover">
+                <img src="<%= vinyl.cover_image %>" alt="<%= vinyl.title %> cover">
             </li>
             <% }); %>
         </ul>
