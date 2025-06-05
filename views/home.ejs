@@ -11,7 +11,13 @@
         <ul>
             <% vinyls.forEach(vinyl => { %>
             <li>
-                <a href="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>"><%= vinyl.title %> - <%= vinyl.artist %></a>
+                <h2><%= vinyl.title %></h2>
+                <p>Artist: <%= vinyl.artist_name %></p>
+                <p>Genre: <%= vinyl.genre_name %></p>
+                <p>Release Year: <%= vinyl.release_year %></p>
+                <p>Stock Quantity: <%= vinyl.stock_quantity %></p>
+                <p>Price: $<%= vinyl.price %></p>
+                <img src="/images/<%= vinyl.cover_image %>" alt="<%= vinyl.title %> cover">
             </li>
             <% }); %>
         </ul>
