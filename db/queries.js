@@ -69,10 +69,37 @@ async function getVinylByCategory(categoryId) {
     return rows;
 }
 
+async function addVinyl(title, artist_id, genre_id, release_year, stock_quantity, price, cover_image) {
+    const query = `
+        INSERT INTO vinyls (title, artist_id, genre_id, release_year, stock_quantity, price, cover_image)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+    `;
+    await pool.query(query, [title, artist_id, genre_id, release_year, stock_quantity, price, cover_image]);
+}
+
+async function addArtist(name, formed_year, origin) {
+    const query = `
+        INSERT INTO artists (name, formed_year, origin)
+        VALUES ($1, $2, $3)
+    `;
+    await pool.query(query, [name, formed_year, origin]);
+}
+
+async function addCategory(name) {
+    const query = `
+        INSERT INTO genres (name)
+        VALUES ($1)
+    `;
+    await pool.query(query, [name]);
+}
+
 module.exports = {
     getAllVinyls,
     getAllArtists,
     getAllCategories,
     getVinylByArtist,
-    getVinylByCategory
+    getVinylByCategory,
+    addVinyl,
+    addArtist,
+    addCategory
 };
