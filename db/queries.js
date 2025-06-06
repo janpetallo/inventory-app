@@ -43,13 +43,13 @@ async function getVinylById(vinylId) {
 }
 
 async function getAllArtists() {
-    const query = 'SELECT * FROM artists';
+    const query = 'SELECT * FROM artists ORDER BY name';
     const { rows } = await pool.query(query);
     return rows;
 }
 
 async function getAllCategories() {
-    const query = 'SELECT * FROM genres';
+    const query = 'SELECT * FROM genres ORDER BY name';
     const { rows } = await pool.query(query);
     return rows;
 }
