@@ -4,21 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
-    <h1><%= title%></h1>
-    <% if (typeof categories !== 'undefined' && categories.length > 0) { %>
-    <ul>
-      <% categories.forEach(category => { %>
-      <li>
-        <a href="/categories/<%= category.name %>/<%= category.id %>"><%= category.name %></a>
-      </li>
-      <% }); %>
-    </ul>
-    <% } else { %>
-    <p>No categories found.</p>
-    <% } %>
-    <p><a href="/categories/new">Add New Category</a></p>
-    <p><a href="/">Back to Home</a></p>
+  <body class="has-fab">
+    <!-- Navigation Bar -->
+    <%- include('components/navbar', { currentPage: 'categories' }) %>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1><%= title %></h1>
+      
+      <% if (typeof categories !== 'undefined' && categories.length > 0) { %>
+        <div class="category-list">
+          <% categories.forEach(category => { %>
+            <div class="category-item">
+              <a href="/categories/<%= category.name %>/<%= category.id %>"><%= category.name %></a>
+            </div>
+          <% }); %>
+        </div>
+      <% } else { %>
+        <div class="empty-state">
+          <p>No genres found.</p>
+          <p>Add some genres to organize your vinyl collection!</p>
+        </div>
+      <% } %>
+    </main>
+    
+    <!-- Floating Action Button -->
+    <a href="/categories/new" class="fab">
+      <i class="fas fa-plus btn-icon"></i>Add Genre
+    </a>
   </body>
 </html>

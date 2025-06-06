@@ -4,49 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Vinyl</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <header>
+    <!-- Navigation Bar -->
+    <%- include('components/navbar', { currentPage: 'home' }) %>
+
+    <!-- Main Content -->
+    <main class="main-content">
         <h1>Add New Vinyl</h1>
-    </header>
-    <main>
-        <form action="/vinyls/new" method="POST">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
+        
+        <div class="form-container">
+            <form action="/vinyls/new" method="POST">
+                <div class="form-group">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" id="title" name="title" class="form-input" required>
+                </div>
 
-            <label for="artist_id">Artist:</label>
-            <select id="artist_id" name="artist_id" required>
-                <% artists.forEach(artist => { %>
-                    <option value="<%= artist.id %>"><%= artist.name %></option>
-                <% }); %>
-            </select>
-            <p><a href="/artists/new">Add New Artist</a></p>
+                <div class="form-group">
+                    <label for="artist_id" class="form-label">Artist:</label>
+                    <select id="artist_id" name="artist_id" class="form-select" required>
+                        <% artists.forEach(artist => { %>
+                            <option value="<%= artist.id %>"><%= artist.name %></option>
+                        <% }); %>
+                    </select>
+                    <p><a href="/artists/new" class="btn btn-secondary" style="margin-top: 0.5rem; display: inline-block;">Add New Artist</a></p>
+                </div>
 
-            <label for="genre_id">Genre:</label>
-            <select id="genre_id" name="genre_id" required>
-                <% genres.forEach(genre => { %>
-                    <option value="<%= genre.id %>"><%= genre.name %></option>
-                <% }); %>
-            </select>
-            <p><a href="/categories/new">Add New Genre</a></p>
+                <div class="form-group">
+                    <label for="genre_id" class="form-label">Genre:</label>
+                    <select id="genre_id" name="genre_id" class="form-select" required>
+                        <% genres.forEach(genre => { %>
+                            <option value="<%= genre.id %>"><%= genre.name %></option>
+                        <% }); %>
+                    </select>
+                    <p><a href="/categories/new" class="btn btn-secondary" style="margin-top: 0.5rem; display: inline-block;">Add New Genre</a></p>
+                </div>
 
-            <label for="release_year">Release Year:</label>
-            <input type="number" id="release_year" name="release_year">
+                <div class="form-group">
+                    <label for="release_year" class="form-label">Release Year:</label>
+                    <input type="number" id="release_year" name="release_year" class="form-input">
+                </div>
 
-            <label for="stock_quantity">Stock Quantity:</label>
-            <input type="number" id="stock_quantity" name="stock_quantity">
+                <div class="form-group">
+                    <label for="stock_quantity" class="form-label">Stock Quantity:</label>
+                    <input type="number" id="stock_quantity" name="stock_quantity" class="form-input">
+                </div>
 
-            <label for="price">Price:</label>
-            <input type="number" step="0.01" id="price" name="price" required>
+                <div class="form-group">
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="number" step="0.01" id="price" name="price" class="form-input" required>
+                </div>
 
-            <label for="cover_image">Cover Image URL:</label>
-            <input type="text" id="cover_image" name="cover_image">
+                <div class="form-group">
+                    <label for="cover_image" class="form-label">Cover Image URL:</label>
+                    <input type="text" id="cover_image" name="cover_image" class="form-input">
+                </div>
 
-            <button type="submit">Add Vinyl</button>
-        </form>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <i class="fas fa-save btn-icon"></i>Add Vinyl
+                </button>
+            </form>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 Inventory App</p>
-    </footer>
 </body>
 </html>

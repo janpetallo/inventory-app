@@ -4,41 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1><%= title %></h1>
-    <form action="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/edit" method="POST">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" value="<%= vinyl.title %>" required>
+    <%- include('components/navbar', { currentPage: 'home' }) %>
 
-        <label for="artist_id">Artist:</label>
-        <select id="artist_id" name="artist_id" required>
-            <% artists.forEach(artist => { %>
-                <option value="<%= artist.id %>" <%= vinyl.artist_id == artist.id ? 'selected' : '' %>><%= artist.name %></option>
-            <% }); %>
-        </select>
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1><%= title %></h1>
+        
+        <div class="form-container">
+            <form action="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/edit" method="POST">
+                <div class="form-group">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" id="title" name="title" class="form-input" value="<%= vinyl.title %>" required>
+                </div>
 
-        <label for="genre_id">Genre:</label>
-        <select id="genre_id" name="genre_id" required>
-            <% genres.forEach(genre => { %>
-                <option value="<%= genre.id %>" <%= vinyl.genre_id == genre.id ? 'selected' : '' %>><%= genre.name %></option>
-            <% }); %>
-        </select>
+                <div class="form-group">
+                    <label for="artist_id" class="form-label">Artist:</label>
+                    <select id="artist_id" name="artist_id" class="form-select" required>
+                        <% artists.forEach(artist => { %>
+                            <option value="<%= artist.id %>" <%= vinyl.artist_id == artist.id ? 'selected' : '' %>><%= artist.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
 
-        <label for="release_year">Release Year:</label>
-        <input type="number" id="release_year" name="release_year" value="<%= vinyl.release_year %>" required>
+                <div class="form-group">
+                    <label for="genre_id" class="form-label">Genre:</label>
+                    <select id="genre_id" name="genre_id" class="form-select" required>
+                        <% genres.forEach(genre => { %>
+                            <option value="<%= genre.id %>" <%= vinyl.genre_id == genre.id ? 'selected' : '' %>><%= genre.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
 
-        <label for="stock_quantity">Stock Quantity:</label>
-        <input type="number" id="stock_quantity" name="stock_quantity" value="<%= vinyl.stock_quantity %>" required>
+                <div class="form-group">
+                    <label for="release_year" class="form-label">Release Year:</label>
+                    <input type="number" id="release_year" name="release_year" class="form-input" value="<%= vinyl.release_year %>" required>
+                </div>
 
-        <label for="price">Price:</label>
-        <input type="number" step="0.01" id="price" name="price" value="<%= vinyl.price %>" required>
+                <div class="form-group">
+                    <label for="stock_quantity" class="form-label">Stock Quantity:</label>
+                    <input type="number" id="stock_quantity" name="stock_quantity" class="form-input" value="<%= vinyl.stock_quantity %>" required>
+                </div>
 
-        <label for="cover_image">Cover Image URL:</label>
-        <input type="text" id="cover_image" name="cover_image" value="<%= vinyl.cover_image %>">
+                <div class="form-group">
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="number" step="0.01" id="price" name="price" class="form-input" value="<%= vinyl.price %>" required>
+                </div>
 
-        <button type="submit">Update Vinyl</button>
-    </form>
-    <a href="/">Back to Home</a>
+                <div class="form-group">
+                    <label for="cover_image" class="form-label">Cover Image URL:</label>
+                    <input type="text" id="cover_image" name="cover_image" class="form-input" value="<%= vinyl.cover_image %>">
+                </div>
+
+                <div class="btn-group" style="justify-content: space-between;">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save btn-icon"></i>Update Vinyl</button>
+                    <a href="/" class="btn btn-secondary"><i class="fas fa-times btn-icon"></i>Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

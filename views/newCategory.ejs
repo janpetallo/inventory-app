@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Category</title>
+    <title>Add New Genre</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <header>
-        <h1>Add New Category</h1>
-    </header>
-    <main>
-        <form action="/categories/new" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <!-- Navigation Bar -->
+    <%- include('components/navbar', { currentPage: 'categories' }) %>
 
-            <button type="submit">Add Category</button>
-        </form>
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>Add New Genre</h1>
+        
+        <div class="form-container">
+            <form action="/categories/new" method="POST">
+                <div class="form-group">
+                    <label for="name" class="form-label">Genre Name:</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <i class="fas fa-music btn-icon"></i>Add Genre
+                </button>
+            </form>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2025 Inventory App</p>
-    </footer>
 </body>
 </html>

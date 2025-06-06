@@ -4,40 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
-    <header>
-      <h1>Vinyls by Category: <%= categoryName %></h1>
-    </header>
-    <main>
+  <body class="has-fab">
+    <!-- Navigation Bar -->
+    <%- include('components/navbar', { currentPage: 'categories' }) %>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1>Vinyls by Genre: <%= categoryName %></h1>
+      
       <% if (vinyls.length > 0) { %>
-      <ul>
-        <% vinyls.forEach(vinyl => { %>
-        <li>
-          <h2><%= vinyl.title %></h2>
-          <p>Artist: <%= vinyl.artist_name %></p>
-          <p>Genre: <%= vinyl.genre_name %></p>
-          <p>Release Year: <%= vinyl.release_year %></p>
-          <p>Stock Quantity: <%= vinyl.stock_quantity %></p>
-          <p>Price: $<%= vinyl.price %></p>
-          <button>
-            <a href="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/edit">Edit</a>
-          </button>
-          <button>
-            <a href="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/delete">Delete</a>
-          </button>
-          <br />
-          <img src="<%= vinyl.cover_image %>" alt="<%= vinyl.title %> cover" />
-        </li>
-        <% }); %>
-      </ul>
+        <div class="vinyl-grid">
+          <% vinyls.forEach(vinyl => { %>
+            <div class="vinyl-card">
+              <img src="<%= vinyl.cover_image %>" alt="<%= vinyl.title %> cover" />
+              <div class="vinyl-info">
+                <h2><%= vinyl.title %></h2>
+                <p><strong>Artist:</strong> <%= vinyl.artist_name %></p>
+                <p><strong>Genre:</strong> <%= vinyl.genre_name %></p>
+                <p><strong>Release Year:</strong> <%= vinyl.release_year %></p>
+                <p class="stock <%= vinyl.stock_quantity < 5 ? 'low' : '' %>"><strong>Stock:</strong> <%= vinyl.stock_quantity %></p>
+                <p class="price"><strong>Price:</strong> $<%= vinyl.price %></p>
+                <div class="btn-group">
+                  <a href="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/edit" class="btn btn-secondary">
+                    <i class="fas fa-edit btn-icon"></i>Edit
+                  </a>
+                  <form action="/vinyls/<%= vinyl.title %>/<%= vinyl.id %>/delete" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this vinyl?');">
+                      <i class="fas fa-trash btn-icon"></i>Delete
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
       <% } else { %>
-      <p>No vinyls found for this category.</p>
+        <div class="empty-state">
+          <p>No vinyls found for this genre.</p>
+          <p>Be the first to add a record in this category!</p>
+        </div>
       <% } %>
-      <p><a href="/vinyls/new">Add New Vinyl</a></p>
     </main>
-    <footer>
-      <p>&copy; 2025 Inventory App</p>
-    </footer>
+    
+    <!-- Floating Action Button -->
+    <a href="/vinyls/new" class="fab">
+      <i class="fas fa-plus btn-icon"></i>Add Vinyl
+    </a>
   </body>
 </html>

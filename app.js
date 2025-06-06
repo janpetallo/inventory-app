@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express(); // Import the express module to create an Express application
 
@@ -8,8 +7,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set('view engine', 'ejs'); // Set the view engine to EJS
 
 app.use(express.urlencoded({ extended: true })); // Middleware to parse URL-encoded bodies
-const assetsPath = path.join(__dirname, 'assets'); 
-app.use('/assets', express.static(assetsPath)); // Serve static files from the 'assets' directory
+const publicPath = path.join(__dirname, 'public'); 
+app.use(express.static(publicPath)); // Serve static files from the 'public' directory
 
 const homeRouter = require('./routes/homeRouter'); 
 app.use('/', homeRouter); // Use the home router for routes starting with '/'

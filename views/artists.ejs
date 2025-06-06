@@ -4,21 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <% if (typeof artists !== 'undefined' && artists.length > 0) { %>
-    <ul>
-      <% artists.forEach(function(artist) { %>
-      <li>
-        <a href="/artists/<%= artist.name %>/<%= artist.id %>"><%= artist.name %></a>
-      </li>
-      <% }); %>
-    </ul>
-    <% } else { %>
-    <p>There are no artists.</p>
-    <% } %>
-    <p><a href="/artists/new">Add New Artist</a></p>
-    <p><a href="/">Back to Home</a></p>
+  <body class="has-fab">
+    <!-- Navigation Bar -->
+    <%- include('components/navbar', { currentPage: 'artists' }) %>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h1><%= title %></h1>
+      
+      <% if (typeof artists !== 'undefined' && artists.length > 0) { %>
+        <div class="artist-list">
+          <% artists.forEach(function(artist) { %>
+            <div class="artist-item">
+              <a href="/artists/<%= artist.name %>/<%= artist.id %>"><%= artist.name %></a>
+            </div>
+          <% }); %>
+        </div>
+      <% } else { %>
+        <div class="empty-state">
+          <p>No artists found.</p>
+          <p>Add some artists to your vinyl collection!</p>
+        </div>
+      <% } %>
+    </main>
+    
+    <!-- Floating Action Button -->
+    <a href="/artists/new" class="fab">
+      <i class="fas fa-plus btn-icon"></i>Add Artist
+    </a>
   </body>
 </html>

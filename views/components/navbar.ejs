@@ -1,0 +1,11 @@
+<!-- Navigation Bar Component -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">Vinyl Store</a>
+    <ul class="nav-menu">
+      <li><a href="/" class="nav-link <%= currentPage === 'home' ? 'active' : '' %>">Home</a></li>
+      <li><a href="/categories" class="nav-link <%= currentPage === 'categories' ? 'active' : '' %>">Genres</a></li>
+      <li><a href="/artists" class="nav-link <%= currentPage === 'artists' ? 'active' : '' %>">Artists</a></li>
+    </ul>
+  </div>
+</nav>
