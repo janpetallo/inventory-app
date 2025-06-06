@@ -73,9 +73,12 @@ inventory-app/
    
    Create a `.env` file in the root directory:
    ```env
-   DB_URL=postgresql://username:password@localhost:5432/vinyl_inventory
+   DB_USER=your_username
+   DB_PASSWORD=your_password
+   DB_DATABASE=vinyl_inventory
+   DB_URL=postgresql://your_username:your_password@localhost:5432/vinyl_inventory
    ```
-   Replace `username` and `password` with your PostgreSQL credentials.
+   Replace `your_username` and `your_password` with your PostgreSQL credentials.
 
 5. **Initialize the database**
    
