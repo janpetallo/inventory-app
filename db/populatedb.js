@@ -38,6 +38,10 @@ const genres = [
   { name: "Classical" },
   { name: "Electronic" },
   { name: "Hip Hop" },
+  { name: "OPM" },
+  { name: "Pop" },
+  { name: "Alternative" },
+  { name: "Pop Rock" },
 ];
 
 const artists = [
@@ -54,6 +58,9 @@ const artists = [
     formed_year: 1985,
     origin: "Queens, New York, USA",
   },
+  { name: "Eraserheads", formed_year: 1989, origin: "Philippines" },
+  { name: "Keshi", formed_year: 2017, origin: "USA" },
+  { name: "The 1975", formed_year: 2002, origin: "Wilmslow, United Kingdom" },
 ];
 
 const vinyls = [
@@ -73,8 +80,9 @@ const vinyls = [
     genre_name: "Jazz",
     release_year: 1959,
     stock_quantity: 50,
-    price: 22.5,
-    cover_image: "https://m.media-amazon.com/images/I/71W8b8QzfiL._AC_SL1400_.jpg",
+    price: 22.50,
+    cover_image:
+      "https://m.media-amazon.com/images/I/71W8b8QzfiL._AC_SL1400_.jpg",
   },
   {
     title: "Brandenburg Concertos",
@@ -83,7 +91,8 @@ const vinyls = [
     release_year: 1721,
     stock_quantity: 30,
     price: 19.75,
-    cover_image: "https://m.media-amazon.com/images/I/81YYHs-p7GL._AC_SL1500_.jpg",
+    cover_image:
+      "https://m.media-amazon.com/images/I/81YYHs-p7GL._AC_SL1500_.jpg",
   },
   {
     title: "Trans-Europe Express",
@@ -91,8 +100,9 @@ const vinyls = [
     genre_name: "Electronic",
     release_year: 1977,
     stock_quantity: 75,
-    price: 20.0,
-    cover_image: "https://m.media-amazon.com/images/I/61rTHRxqFXL._AC_SL1055_.jpg",
+    price: 20.00,
+    cover_image:
+      "https://m.media-amazon.com/images/I/61rTHRxqFXL._AC_SL1055_.jpg",
   },
   {
     title: "The Low End Theory",
@@ -100,8 +110,129 @@ const vinyls = [
     genre_name: "Hip Hop",
     release_year: 1991,
     stock_quantity: 60,
-    price: 24.0,
-    cover_image: "https://m.media-amazon.com/images/I/61x4y2U+8aL._AC_SL1500_.jpg",
+    price: 24.00,
+    cover_image:
+      "https://m.media-amazon.com/images/I/61x4y2U+8aL._AC_SL1500_.jpg",
+  },
+  {
+    title: "Cutterpillow",
+    artist_name: "Eraserheads",
+    genre_name: "OPM",
+    release_year: 1995,
+    stock_quantity: 30,
+    price: 39.99,
+    cover_image:
+      "https://static.wikia.nocookie.net/3b672e93-cff7-422b-b747-99934553af3c",
+  },
+  {
+    title: "Ultraelectromagneticpop!",
+    artist_name: "Eraserheads",
+    genre_name: "OPM",
+    release_year: 1993,
+    stock_quantity: 69,
+    price: 39.99,
+    cover_image:
+      "https://mindanaotimes.com.ph/wp-content/uploads/2019/11/eheads-vinyl-product-1.png",
+  },
+  {
+    title: "Circus",
+    artist_name: "Eraserheads",
+    genre_name: "OPM",
+    release_year: 1994,
+    stock_quantity: 45,
+    price: 59.99,
+    cover_image:
+      "https://billboardphilippines.com/wp-content/uploads/2023/11/Eraserheads-Circus-Vinyl.jpg",
+  },
+  {
+    title: "Sticker Happy",
+    artist_name: "Eraserheads",
+    genre_name: "OPM",
+    release_year: 1997,
+    stock_quantity: 50,
+    price: 44.99,
+    cover_image:
+      "https://i.scdn.co/image/ab67616d0000b2736713401b7541c1b152dd7075",
+  },
+  {
+    title: "Fruitcake",
+    artist_name: "Eraserheads",
+    genre_name: "OPM",
+    release_year: 1996,
+    stock_quantity: 97,
+    price: 44.99,
+    cover_image:
+      "https://i.scdn.co/image/ab67616d0000b273bd32341263ae8171daff7ce5",
+  },
+  {
+    title: "Natin99",
+    artist_name: "Eraserheads",
+    genre_name: "OPM",
+    release_year: 1999,
+    stock_quantity: 99,
+    price: 44.99,
+    cover_image:
+      "https://i.scdn.co/image/ab67616d0000b27316319e6b532b0a15ab4028c6",
+  },
+  {
+    title: "GABRIEL",
+    artist_name: "Keshi",
+    genre_name: "Pop",
+    release_year: 2022,
+    stock_quantity: 22,
+    price: 39.99,
+    cover_image:
+      "https://goodrecordstogo.com/cdn/shop/products/keshivinyl_300x300.jpg?v=1660863155",
+  },
+  {
+    title: "Requiem",
+    artist_name: "Keshi",
+    genre_name: "Pop",
+    release_year: 2024,
+    stock_quantity: 24,
+    price: 44.99,
+    cover_image:
+      "https://www.umusic.ca/cdn/shop/files/keshi_LP_94249dac-a6ed-409b-a983-0480be18da7f.png?v=1720454852",
+  },
+  {
+    title: "Requiem Alternate Cover",
+    artist_name: "Keshi",
+    genre_name: "Pop",
+    release_year: 2024,
+    stock_quantity: 20,
+    price: 44.99,
+    cover_image:
+      "https://www.umusic.ca/cdn/shop/files/D2CVariant02_Front_NoSleeve_47327fc6-1cf8-4c1c-af53-c0510493fd2d.png?v=1723210963",
+  },
+  {
+    title: "Requiem Deluxe",
+    artist_name: "Keshi",
+    genre_name: "OPM",
+    release_year: 2025,
+    stock_quantity: 25,
+    price: 44.99,
+    cover_image:
+      "https://i.scdn.co/image/ab67616d00001e023dfa5d71dad925112f5d5b9a",
+  },
+  {
+    title: "Being Funny in A Foreign Language",
+    artist_name: "The 1975",
+    genre_name: "Alternative",
+    release_year: 2022,
+    stock_quantity: 22,
+    price: 42.99,
+    cover_image:
+      "https://upload.wikimedia.org/wikipedia/en/d/d7/The_1975_-_Being_Funny_in_a_Foreign_Language.png",
+  },
+  {
+    title: "A Brief Inquiry into Online Relationships",
+    artist_name: "The 1975",
+    genre_name: "Pop",
+    release_year: 2018,
+    stock_quantity: 40,
+    price: 42.99,
+    cover_image:
+      "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/A_Brief_Inquiry_into_Online_Relationships.png/250px-A_Brief_Inquiry_into_Online_Relationships.png",
   },
 ];
 
