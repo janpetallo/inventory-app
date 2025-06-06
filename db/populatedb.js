@@ -207,7 +207,7 @@ const vinyls = [
   {
     title: "Requiem Deluxe",
     artist_name: "Keshi",
-    genre_name: "OPM",
+    genre_name: "Pop",
     release_year: 2025,
     stock_quantity: 25,
     price: 44.99,
