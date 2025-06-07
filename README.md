@@ -21,6 +21,10 @@ The application demonstrates key backend concepts including MVC architecture, da
 - **Templating**: EJS (Embedded JavaScript)
 - **Environment**: dotenv for configuration
 
+## AI Assistance with Styling
+
+The primary focus of this project was on backend development, including Node.js, Express, and PostgreSQL. To expedite the frontend styling process and maintain this focus, AI assistance was utilized for generating the CSS in `public/style.css`.
+
 ## Project Structure
 
 ```
