@@ -1,7 +1,20 @@
-/* Modern Vinyl Inventory App Styles */
-@import url('https://fonts.googleapis.com/css2?family=Circular+Std:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gotham:wght@300;400;500;600;700&display=swap');
+/* Spotify-Inspired Theme for Vinyl Inventory App */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Spotify Color Palette */
+:root {
+  --spotify-black: #121212;
+  --spotify-dark-gray: #181818;
+  --spotify-medium-gray: #282828;
+  --spotify-light-gray: #535353;
+  --spotify-text-primary: #FFFFFF;
+  --spotify-text-secondary: #B3B3B3;
+  --spotify-green: #1DB954;
+  --spotify-green-hover: #1ED760;
+  --spotify-border-radius-main: 8px;
+  --spotify-border-radius-button: 50px; /* Pill shape */
+}
 
 /* Reset and base styles */
 * {
@@ -11,10 +24,10 @@
 }
 
 body {
-  font-family: 'Gotham', 'Circular Std', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', 'Arial', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--spotify-text-primary);
+  background-color: var(--spotify-black);
   min-height: 100vh;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -29,13 +42,12 @@ body {
 
 /* Navigation Bar */
 .navbar {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  background: var(--spotify-black); /* Solid black like Spotify's top bar */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--spotify-medium-gray);
 }
 
 .nav-container {
@@ -48,168 +60,172 @@ body {
 }
 
 .nav-logo {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #667eea;
+  color: var(--spotify-text-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  letter-spacing: -0.02em;
+  gap: 0.6rem;
 }
 
 .nav-logo:before {
-  content: "🎵";
-  font-size: 1.2rem;
+  content: "🎧"; /* Headphone icon, more Spotify-like */
+  font-size: 1.5rem;
+  color: var(--spotify-green);
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .nav-link {
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
+  color: var(--spotify-text-secondary);
+  font-weight: 600;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  border-radius: var(--spotify-border-radius-button); /* Pill shape for links if desired, or keep simpler */
+  transition: color 0.2s ease;
   position: relative;
-  letter-spacing: -0.01em;
 }
 
 .nav-link:hover {
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
-  transform: translateY(-2px);
+  color: var(--spotify-text-primary);
 }
 
 .nav-link.active {
-  background: #667eea;
-  color: white;
+  color: var(--spotify-text-primary);
+  position: relative; /* Needed for the pseudo-element */
+  /* Optional: background for active link, Spotify often just uses text color change */
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px; /* Adjust as needed */
+  width: 5px;
+  height: 5px;
+  background-color: var(--spotify-green);
+  border-radius: 50%;
 }
 
 /* Main content area */
 .main-content {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: var(--spotify-black); /* Keep consistent with body or slightly lighter if preferred */
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  border-radius: 0; /* Spotify often has less defined content areas, more seamless */
   max-width: 1200px;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 180px); /* Adjust based on navbar height */
   margin-bottom: 6rem; /* Extra space for FAB */
 }
 
 /* Typography */
-h1 {
-  font-size: 2.5rem;
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: #333;
-  margin-bottom: 2rem;
-  text-align: center;
-  position: relative;
+  color: var(--spotify-text-primary);
   letter-spacing: -0.02em;
 }
 
-h1:after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  margin: 1rem auto;
-  border-radius: 2px;
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  text-align: left; /* Spotify often left-aligns titles */
+}
+
+h1:after { /* Remove or restyle underline if not Spotify-like */
+  display: none;
 }
 
 h2 {
   font-size: 1.5rem;
-  color: #333;
   margin-bottom: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
 }
 
 h3 {
-  font-size: 1.25rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: 1.2rem;
+  color: var(--spotify-text-secondary);
+  margin-bottom: 0.75rem;
 }
 
 /* Vinyl grid layout */
 .vinyl-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Smaller cards, more items */
+  gap: 1.5rem;
+  margin: 1.5rem 0;
 }
 
-.vinyl-card {
-  background: white;
-  border-radius: 15px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.vinyl-card, .category-item, .artist-item {
+  background: var(--spotify-medium-gray);
+  border-radius: var(--spotify-border-radius-main);
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-.vinyl-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+.vinyl-card:hover, .category-item:hover, .artist-item:hover {
+  background: var(--spotify-light-gray);
+  transform: translateY(-2px);
 }
 
 .vinyl-card img {
   width: 100%;
-  height: 200px;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Square images */
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: var(--spotify-border-radius-main); /* Consistent rounding */
+  margin-bottom: 0.75rem;
 }
 
-.vinyl-info p {
-  margin: 0.5rem 0;
-  color: #666;
+.vinyl-info h3 { /* Title of vinyl */
+  font-size: 0.95rem; /* Slightly smaller for better fit */
+  font-weight: 600;
+  color: var(--spotify-text-primary);
+  margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.vinyl-info p { /* Artist, other details */
+  margin: 0.25rem 0;
+  color: var(--spotify-text-secondary);
+  font-size: 0.8rem; /* Slightly smaller */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
 }
 
 .vinyl-info p strong {
-  color: #333;
+  color: var(--spotify-text-secondary); /* Keep consistent or slightly brighter */
+  font-weight: 500;
 }
 
-/* Lists */
+/* Lists (Categories, Artists) - styled similar to cards */
 .category-list, .artist-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1rem;
-  margin: 2rem 0;
-}
-
-.category-item, .artist-item {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.category-item:hover, .artist-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  margin: 1.5rem 0;
 }
 
 .category-item a, .artist-item a {
   text-decoration: none;
-  color: #333;
+  color: var(--spotify-text-primary);
   font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
+  font-size: 1rem;
+  display: block; /* Make whole card clickable */
+  text-align: center;
 }
 
 /* Buttons */
@@ -217,193 +233,225 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  gap: 0.4rem; /* Slightly reduced gap */
+  padding: 0.5rem 1rem; /* Adjusted padding */
   border: none;
-  border-radius: 8px;
+  border-radius: var(--spotify-border-radius-button);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700; /* Spotify buttons are often bold */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   text-align: center;
   margin: 0.25rem;
-  min-width: 100px;
-  height: 44px;
-  font-size: 0.9rem;
-  letter-spacing: -0.01em;
+  min-width: auto; /* Let content define width or set fixed */
+  height: auto;
+  font-size: 0.85rem; /* Slightly smaller button font */
+  letter-spacing: 0.01em;
   font-family: inherit;
+  text-transform: uppercase; /* Spotify often uses uppercase */
 }
 
+.vinyl-card .btn,
+.category-item .btn,
+.artist-item .btn {
+  padding: 0.4rem 0.8rem; /* Match mobile button padding */
+  font-size: 0.8rem;    /* Match mobile button font size */
+  margin: 0.2rem;       /* Slightly reduce margin for tighter packing */
+}
+
+/* Specific button styles */
 .btn-primary {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
+  background-color: var(--spotify-green);
+  color: var(--spotify-black); /* Black text on green button */
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  background-color: var(--spotify-green-hover);
+  transform: scale(1.03); /* Slight scale on hover */
 }
 
 .btn-secondary {
-  background: #f8f9fa;
-  color: #333;
-  border: 1px solid #dee2e6;
+  background-color: var(--spotify-light-gray);
+  color: var(--spotify-text-primary);
+  border: 1px solid var(--spotify-light-gray); /* Or transparent */
 }
 
 .btn-secondary:hover {
-  background: #e9ecef;
-  transform: translateY(-2px);
+  background-color: var(--spotify-medium-gray); /* Darken slightly */
+  border-color: var(--spotify-medium-gray);
+  transform: scale(1.03);
 }
 
 .btn-danger {
-  background: linear-gradient(45deg, #8b5a87, #764ba2);
-  color: white;
+  background-color: var(--spotify-light-gray); /* Or a muted red if necessary */
+  color: var(--spotify-text-primary);
 }
 
 .btn-danger:hover {
-  background: linear-gradient(45deg, #7a4f77, #693d91);
-  transform: translateY(-2px);
+  background-color: var(--spotify-medium-gray);
+  transform: scale(1.03);
 }
 
 .btn-group {
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;
-  justify-content: center;
+  justify-content: flex-start; /* Align with left-aligned titles */
+  flex-wrap: wrap; /* Ensure buttons can wrap */
+}
+
+/* Specific adjustments for button groups within cards */
+.vinyl-card .btn-group,
+.category-item .btn-group, /* Assuming similar structure */
+.artist-item .btn-group {  /* Assuming similar structure */
+  gap: 0.5rem; /* Adjusted gap for icon buttons */
+  margin-top: 0.75rem; /* Slightly reduce top margin */
+  align-items: center; /* Ensure vertical alignment of buttons */
+}
+
+/* Further refinement for buttons within cards, especially in a btn-group. */
+/* This will override more general .btn styles for this specific context. */
+/* ICON-ONLY BUTTONS STYLING: */
+.vinyl-card .btn-group .btn,
+.category-item .btn-group .btn, /* Assuming similar structure */
+.artist-item .btn-group .btn {  /* Assuming similar structure */
+  width: 2.25rem;         /* Fixed width for the button */
+  height: 2.25rem;        /* Fixed height for the button */
+  padding: 0;             /* No padding, icon will be centered by flex */
+  font-size: 0.9rem;      /* Size of the icon */
+  margin: 0.1rem;         /* Consistent margin */
+  line-height: 1;         /* Helps center icon vertically in some cases */
+  flex-grow: 0;           /* Don't grow */
+  flex-shrink: 0;         /* Don't shrink, maintain fixed size */
+  flex-basis: 2.25rem;    /* Explicit basis to match width */
+  /* display: inline-flex, align-items: center, justify-content: center are inherited from .btn */
+  /* border-radius: var(--spotify-border-radius-button) will make them circular/pill */
+}
+
+/* Ensure icons inside these buttons don't have extra margins */
+.vinyl-card .btn-group .btn .fas,
+.category-item .btn-group .btn .fas,
+.artist-item .btn-group .btn .fas {
+  margin: 0; /* Remove any default margins from Font Awesome icons */
 }
 
 /* Button icons */
 .btn-icon {
-  font-size: 0.9rem;
-  margin-right: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.3rem;
 }
 
 /* Forms */
 .form-container {
-  max-width: 600px;
+  max-width: 550px;
   margin: 2rem auto;
-  background: white;
+  background: var(--spotify-medium-gray);
   padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: var(--spotify-border-radius-main);
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .form-label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #333;
-  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: var(--spotify-text-secondary);
+  font-size: 0.85rem;
+  text-transform: uppercase;
 }
 
 .form-input, .form-select, .form-textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  border: 1px solid var(--spotify-light-gray);
+  border-radius: 4px; /* Spotify inputs are often less rounded than buttons */
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
   font-family: inherit;
-  letter-spacing: -0.01em;
+  background-color: var(--spotify-medium-gray); /* Or slightly lighter */
+  color: var(--spotify-text-primary);
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--spotify-text-primary); /* White border on focus */
+  background-color: var(--spotify-light-gray);
 }
 
 .form-textarea {
-  min-height: 120px;
+  min-height: 100px;
   resize: vertical;
 }
 
-/* Action links */
+/* Action links (if used outside of buttons) */
 .action-links {
-  text-align: center;
-  margin: 0 0 2rem 0;
+  text-align: left;
+  margin: 0 0 1.5rem 0;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+  border-bottom: 1px solid var(--spotify-medium-gray);
 }
 
 .action-link {
   display: inline-block;
-  margin: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  /* Style like .btn-secondary or .btn-primary as needed */
+  /* Example using secondary style */
+  padding: 0.5rem 1rem; /* Adjusted padding */
+  border-radius: var(--spotify-border-radius-button);
   text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  letter-spacing: -0.01em;
-  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.2);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-size: 0.85rem; /* Adjusted font size */
+  text-transform: uppercase;
+  background-color: var(--spotify-light-gray);
+  color: var(--spotify-text-primary);
 }
 
 .action-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  background-color: var(--spotify-medium-gray);
+  transform: scale(1.03);
 }
+
 
 /* Floating Action Button (FAB) */
 .fab {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   z-index: 999;
-  border-radius: 50px;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(45deg, #2c3e50, #34495e);
-  border: 3px solid white;
-  color: white;
+  border-radius: var(--spotify-border-radius-button); /* Pill shape */
+  padding: 0.75rem 1.25rem; /* Adjusted padding for text + icon */
+  background: var(--spotify-green);
+  color: var(--spotify-black); /* Black icon/text on green FAB */
   text-decoration: none;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 800;
-  font-size: 1rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 0.9rem; /* Text size in FAB */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  letter-spacing: 0.02em;
+  justify-content: center;
   border: none;
   cursor: pointer;
-  min-width: auto;
-  height: auto;
-  animation: fabPulse 3s ease-in-out infinite;
-}
-
-.fab:hover {
-  transform: translateY(-3px) scale(1.05);
-  background: linear-gradient(45deg, #1a252f, #2c3e50);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(255, 255, 255, 0.3);
-  animation: none; /* Stop pulse on hover */
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
-  color: white;
-  border: 3px solid #f8f9fa;
+  width: auto; /* Auto width for text */
+  height: auto; /* Auto height for text */
+  min-height: 40px; /* Minimum height */
+  animation: none; /* Remove previous pulse if any */
 }
 
 .fab .btn-icon {
-  margin-right: 0.25rem;
-  font-size: 1rem;
+  margin-right: 0.5rem; /* Space between icon and text */
+  font-size: 1rem; /* Icon size in FAB */
 }
 
-/* FAB pulse animation */
-@keyframes fabPulse {
-  0% {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(255, 255, 255, 0.2);
-  }
-  50% {
-    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.4), 0 4px 20px rgba(255, 255, 255, 0.3);
-  }
-  100% {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(255, 255, 255, 0.2);
-  }
+.fab:hover {
+  transform: scale(1.03);
+  background: var(--spotify-green-hover);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 /* Hide regular action-links on pages with FAB */
@@ -411,112 +459,132 @@ h3 {
   display: none;
 }
 
-/* Responsive FAB */
-@media (max-width: 768px) {
-  .fab {
-    bottom: 1.5rem;
-    right: 1.5rem;
-    padding: 0.875rem 1.25rem;
-    font-size: 0.85rem;
-  }
-}
-
 /* Responsive Design Improvements */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
+    padding: 0.8rem 1rem;
   }
-  
   .nav-menu {
-    gap: 1rem;
+    gap: 0.5rem; /* Smaller gap for nav items */
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  
   .main-content {
-    margin: 1rem;
+    margin: 1rem auto;
     padding: 1rem;
+    margin-bottom: 5rem; /* Ensure FAB space */
   }
-  
   .vinyl-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Further adjust for smaller screens */
+    gap: 0.8rem;
   }
-  
   .category-list, .artist-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.8rem;
   }
-  
-  h1 {
-    font-size: 2rem;
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+  .btn {
+    padding: 0.4rem 0.8rem; /* Smaller padding for general mobile buttons */
+    font-size: 0.8rem; /* Smaller font for general mobile buttons */
+  }
+  /* The specific rules for .vinyl-card .btn-group .btn above are already quite small. */
+  /* If they still need to be smaller ONLY on mobile, you can add overrides here, for example: */
+  /*
+  .vinyl-card .btn-group .btn,
+  .category-item .btn-group .btn,
+  .artist-item .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+  }
+  */
+  .form-container {
+    padding: 1.5rem;
+  }
+  .fab {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.6rem 1rem; /* Adjusted for mobile */
+    font-size: 0.85rem; /* Adjusted for mobile */
+    min-height: 36px;
+  }
+  .fab .btn-icon {
+    font-size: 0.9rem; /* Adjusted for mobile */
+    margin-right: 0.3rem;
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* Scrollbar styling - subtle dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--spotify-dark-gray);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--spotify-light-gray);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--spotify-text-secondary);
 }
 
 /* Focus states for accessibility */
-.btn:focus, .nav-link:focus, .form-input:focus, .form-select:focus {
-  outline: 2px solid #667eea;
+.btn:focus-visible, .nav-link:focus-visible, .form-input:focus-visible, .form-select:focus-visible, .fab:focus-visible, .action-link:focus-visible {
+  outline: 2px solid var(--spotify-green);
   outline-offset: 2px;
 }
 
-/* Loading animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Additional Spotify-like details (optional) */
+/* For text that might be a link but not a button */
+a {
+  color: var(--spotify-text-secondary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--spotify-text-primary);
+  text-decoration: underline;
 }
 
-.vinyl-card, .category-item, .artist-item {
-  animation: fadeIn 0.6s ease-out;
-}
-
-/* Improved hover effects for cards */
-.vinyl-card:hover .vinyl-info p {
-  color: #333;
-}
-
-/* Price styling */
+/* Price styling (if you have it) */
 .price {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
-  color: #28a745;
+  color: var(--spotify-text-primary);
 }
 
-/* Stock quantity styling */
+/* Stock quantity styling (if you have it) */
 .stock {
-  color: #6c757d;
-  font-size: 0.9rem;
+  color: var(--spotify-text-secondary);
+  font-size: 0.8rem;
 }
 
 .stock.low {
-  color: #dc3545;
+  color: #E91E63; /* A contrasting color for low stock, if not green */
   font-weight: bold;
 }
 
 /* Empty state */
 .empty-state {
   text-align: center;
-  padding: 3rem 1rem;
-  color: #666;
+  padding: 2rem 1rem;
+  color: var(--spotify-text-secondary);
 }
 
 .empty-state p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  padding: 2rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  padding: 1.5rem;
+  color: var(--spotify-text-secondary);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--spotify-medium-gray);
+  margin-top: 2rem;
 }
